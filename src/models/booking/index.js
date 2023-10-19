@@ -1,6 +1,5 @@
 const sequalize = require("../../configs/dbConn");
 const s = require("sequelize");
-const User = require("../user");
 
 const Booking = sequalize.define(
   "booking",
@@ -47,12 +46,7 @@ const Booking = sequalize.define(
       type: s.STRING,
       defaultValue: "CREATED",
     },
-  },
-  { freezeTableName: true, timestamps: false }
-);
+  });
 
-// TODO :: link with schedule
-// Booking.hasOne(schedule);
-Booking.hasOne(User);
-Booking.sync({ alter: true });
+
 module.exports = Booking;

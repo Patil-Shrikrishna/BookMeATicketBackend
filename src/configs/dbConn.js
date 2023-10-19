@@ -8,7 +8,14 @@ const sequelize = new Sequelize(
   {
     host: process.env.DATABASE_HOST,
     dialect: "postgres",
+    define: {
+      freezeTableName: true,
+      timestamps: false,
+      
+    }
   }
 );
+
+sequelize.sync({alter: true});
 
 module.exports = sequelize;
